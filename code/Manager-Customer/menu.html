@@ -1,0 +1,187 @@
+ <!-- //@authors elizabeth prthvi  -->
+ <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootswatch/3.3.0/journal/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- JS -->
+    <!-- load Angular, Firebase, Firebase Angular Library, and custom app.js -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/1.1.1/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
+     <script src="controllers/index.js"></script>
+</head>
+<body>
+<div ng-controller="ScheduleCtrl" class="container" ng-app="scheduleApp">
+
+<h4>Manager Inventory => Menu Control</h4>
+
+ <button ng-click="login()" ng-hide="authData">Logged In</button>
+<!--ADD ITEM FORM-->
+
+
+<!--TODO LIST-->
+<div class="container">
+ 
+<p><h3>Perishables</h3></p>
+<div style="height:30%;overflow:auto;">
+	<table class="table table-bordered">
+		<tr>
+			<th>Name</th>
+			<th>Quantity</th>
+			<th>In stock</th>
+			<th>Out of Stock</th>
+			<th>Meals in</th>
+			<th>Delete</th>
+		</tr>
+		
+		<tr ng-repeat="item in perishables">
+			<td>{{item.name}}</td>
+			<td>{{item.quantity}}</td>
+			<td><button ng-show = "item.available" ng-click="unavailablePerishable(item)" class="btn btn-danger btn-xs">Went of stock?</button></td>
+			<td><button ng-hide = "item.available" ng-click="availablePerishable(item)" class="btn btn-danger btn-xs">Came in stock?</button></td>
+			<td>{{item.mealsIn}}</td>
+		<!---	<td><button ng-click="editPerishable(item._id)" class="btn btn-info btn-xs">Edit</button></td> -->
+			<td><button ng-click="removePerishable(item)" class="btn btn-danger btn-xs">Delete</button></td>
+		</tr>
+	</table>
+</div>
+   <form>
+	Name: <input type="text" ng-model="more.name" name="Name" required>
+	Quantity: <input type="text" ng-model="more.quantity" name="Quantity" required>
+	Meals In: <input type="text" ng-model="more.mealsIn" name="Meals In" required>
+	<button ng-click="addPerishable()" class="btn btn-info btn-xs">Add</button>
+<!--	<button ng-click="updatePerishable()" class="btn btn-info btn-xs">Update</button> -->
+</form> 
+
+<p><h3>NonPerishables</h3></p>
+<div style="height:30%;overflow:auto;">
+	<table class="table table-bordered">
+		<tr>
+			<th>Name</th>
+			<th>Quantity</th>
+			<th>In stock</th>
+			<th>Out of Stock</th>
+			<th>Meals in</th>
+			<th>Delete</th>
+		</tr>
+		
+		<tr ng-repeat="item2 in nonperishables">
+			<td>{{item2.name}}</td>
+			<td>{{item2.quantity}}</td>
+			<td><button ng-show = "item2.available" ng-click="unavailableNonPerishable(item2)" class="btn btn-danger btn-xs">Went of stock?</button></td>
+			<td><button ng-hide = "item2.available" ng-click="availableNonPerishable(item2)" class="btn btn-danger btn-xs">Came in stock?</button></td>
+			<td>{{item2.mealsIn}}</td>
+		<!---	<td><button ng-click="editPerishable(item._id)" class="btn btn-info btn-xs">Edit</button></td> -->
+			<td><button ng-click="removeNonPerishable(item2)" class="btn btn-danger btn-xs">Delete</button></td>
+		</tr>
+	</table>
+</div>
+ <!--written by elizabeth and prithvi -->
+   <form>
+	Name: <input type="text" ng-model="item2.name" name="Name" required>
+	Quantity: <input type="text" ng-model="item2.quantity" name="Quantity" required>
+	
+	Meals In: <input type="text" ng-model="item2.mealsIn" name="Meals" required>
+	<button ng-click="addNonPerishable()" class="btn btn-info btn-xs">Add</button>
+	<!--<button ng-click="updateNonPerishable()" class="btn btn-info btn-xs">Update</button>-->
+</form> 
+
+
+<p><h3>Drinks</h3></p>
+<div style="height:30%;overflow:auto;">
+	<table class="table table-bordered">
+		<tr>
+			<th>Name</th>
+			<th>Quantity</th>
+			<th>In stock</th>
+			<th>Out of Stock</th>
+			<th>Meals in</th>
+			<th>Delete</th>
+		</tr>
+		
+		<tr ng-repeat="drink in menuDrinks">
+			<td>{{drink.name}}</td>
+			<td>{{drink.quantity}}</td>
+			<td><button ng-show = "drink.available" ng-click="unavailableDrink(drink)" class="btn btn-danger btn-xs">Went of stock?</button></td>
+			<td><button ng-hide = "drink.available" ng-click="availableDrink(drink)" class="btn btn-danger btn-xs">Came in stock?</button></td>
+			<td>{{drink.mealsIn}}</td>
+		<!--	<td><button ng-click="editDrinks(drink._id)" class="btn btn-info btn-xs">Edit</button></td> -->
+			<td><button ng-click="removeDrink(drink)" class="btn btn-danger btn-xs">Delete</button></td>
+		</tr>
+	</table>
+</div>
+   <form>
+	Name: <input type="text" ng-model="drink.name" name="Name" required>
+	Quantity: <input type="text" ng-model="drink.quantity" name="Quantity" required>
+	
+	Meals In: <input type="text" ng-model="drink.mealsIn" name="Meals" required>
+	<button ng-click="addDrink()" class="btn btn-info btn-xs">Add</button>
+<!--	<button ng-click="updateDrinks()" class="btn btn-info btn-xs">Update</button> -->
+</form> 
+
+
+<p><h3>Utensils</h3></p>
+<div style="height:30%;overflow:auto;">
+	<table class="table table-bordered">
+		<tr>
+			<th>Name</th>
+			<th>Quantity</th>
+			<th>In stock</th>
+			<th>Out of Stock</th>
+			<th>Delete</th>
+		</tr>
+		
+		<tr ng-repeat="uten in utensils">
+			<td>{{uten.name}}</td>
+			<td>{{uten.quantity}}</td>
+			<td><button ng-show = "uten.available" ng-click="unavailableUtensil(uten)" class="btn btn-danger btn-xs">Went of stock?</button></td>
+			<td><button ng-hide = "uten.available" ng-click="availableUtensil(uten)" class="btn btn-danger btn-xs">Came in stock?</button></td>
+			
+		<!--	<td><button ng-click="editUtensils(item._id)" class="btn btn-info btn-xs">Edit</button></td> -->
+			<td><button ng-click="removeUtensil(uten)" class="btn btn-danger btn-xs">Delete</button></td>
+		</tr>
+	</table>
+</div>
+   <form>
+	Name: <input type="text" ng-model="uten.name" name="Name" required>
+	Quantity: <input type="text" ng-model="uten.quantity" name="Quantity" required>
+	
+	Meals In: <input type="text" ng-model="uten.mealsIn" name="Meals" required>
+	<button ng-click="addUtensil()" class="btn btn-info btn-xs">Add</button>
+	<!--<button ng-click="updateUtensils()" class="btn btn-info btn-xs">Update</button> -->
+</form>  
+
+<h2> Add new menu item </h2>
+ <form>
+	Name: <input type="text" ng-model="food.name" name="Name" required>
+	Price: <input type="text" ng-model="food.price" name="Price" required>
+	
+	Production Costs: <input type="text" ng-model="food.production_costs" name="Production Costs" required>
+	<input type="checkbox" ng-model = "food.dairy" value="food.dairy"  />
+            :Contains Dairy
+          
+
+    <input class = "vegetarian " ng-model = "food.vegetarian" type = "checkbox" value="food.vegetarian" />
+            :Vegetarian  
+          <input class = "nuts" type = "checkbox" ng-model = "food.nuts" value="food.nuts" />
+            :Contains Nuts 
+
+	<br>
+	<button ng-click="addAppmenu()" class="btn btn-info btn-xs">Add as App</button>
+	<h5>or</h5>
+	<button ng-click="addEntreemenu()" class="btn btn-info btn-xs">Add as Entree</button>
+	<h5>or</h5>
+	<button ng-click="addDrinkmenu()" class="btn btn-info btn-xs">Add as Drink</button>
+	<h5>or</h5>
+	<button ng-click="addDessertmenu()" class="btn btn-info btn-xs">Add as dessert</button>
+	<!--<button ng-click="updateUtensils()" class="btn btn-info btn-xs">Update</button> -->
+</form>  
+
+</div>
+
+
+
+</div>
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+</body>

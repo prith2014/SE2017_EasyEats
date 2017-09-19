@@ -1,0 +1,46 @@
+<div class="buttonMainContainer">
+  <div class="ui buttons buttonContainer">
+    <button class="ui button buttonSize" (click)="ViewChange('monthly')">Monthly</button>
+    <div class="or buttonSize"></div>
+    <button class="ui positive button buttonSize" (click)="ViewChange('daily')">Daily</button>
+  </div>
+</div>
+
+
+<hr/>
+
+<div *ngIf="ShowMonthly">
+  <!--<button (click)="ReloadIFrameMonthly(myIframe)" class="positive ui button add-button">Reload</button>-->
+  <br/>
+  <div>
+    <iframe #myIframe width="900" height="800" frameborder="0" scrolling="no" src="//plot.ly/~krisewong/0.embed"></iframe>
+  </div>
+</div>
+
+<div *ngIf="ShowDaily">
+  <button (click)="ReloadIFrameDaily(secondFrame)" class="positive ui button add-button">Reload</button>
+
+
+  <div class="ui celled horizontal list">
+    <div class="item" (click)="MonthClicked('january')">January</div>
+    <div class="item" (click)="MonthClicked('february')">February</div>
+    <div class="item" (click)="MonthClicked('march')">March</div>
+    <div class="item" (click)="MonthClicked('april')">April</div>
+    <div class="item" (click)="MonthClicked('may')">May</div>
+    <div class="item" (click)="MonthClicked('june')">June</div>
+    <div class="item" (click)="MonthClicked('july')">July</div>
+    <div class="item" (click)="MonthClicked('August')">August</div>
+    <div class="item" (click)="MonthClicked('september')">September</div>
+    <div class="item" (click)="MonthClicked('octobor')">Octobor</div>
+    <div class="item" (click)="MonthClicked('november')">November</div>
+    <div class="item" (click)="MonthClicked('december')">December</div>
+  </div>
+
+
+  <br/>
+  <div>
+    <iframe #secondFrame width="900" height="800" frameborder="0" scrolling="no" src="//plot.ly/~krisewong/2.embed"></iframe>
+    <!--<iframe #secondFrame width="900" height="800" frameborder="0" scrolling="no" src="//plot.ly/~SimpleVictor/6.embed"></iframe>-->
+  </div>
+</div>
+

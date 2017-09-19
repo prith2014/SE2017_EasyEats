@@ -1,0 +1,54 @@
+@import '../../../assets/semantic.min.css';
+
+.buttonMainContainer{
+  display: block;
+  text-align: center;
+}
+
+.buttonContainer{
+  margin-top: 20px !important;
+  width: 50%;
+}
+
+.buttonSize{
+  font-size: 17px !important;
+}
+
+.horizontal.list > .item {
+  font-size: 1.5rem !important;
+}
+
+.horizontal.list > .item:hover{
+  color: red;
+  cursor: pointer;
+}
+
+.graph-container{
+  display:grid;
+  grid-template-columns: 25% 75%;
+  grid-template-rows: 50% 50%;
+  grid-template-areas:
+    'box1 box3';
+    'box2 box3';
+}
+
+.box1{
+  height: 50vh;
+  width: 25vw;
+  border: 1px solid red;
+  grid-area: box1;
+}
+
+.box2{
+  height: 50vh;
+  width: 25vw;
+  border: 1px solid blue;
+  grid-area: box2;
+}
+
+.box3{
+  height: 100vh;
+  width: 75vw;
+  border: 1px solid yellow;
+  grid-area: box3;
+}

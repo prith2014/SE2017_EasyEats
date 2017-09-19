@@ -1,0 +1,157 @@
+<!--@authors elizabeth -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular Scheduling</title>
+
+    <!-- CSS -->
+    <!-- load Bootstrap and custom style.css -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootswatch/3.3.0/journal/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- JS -->
+    <!-- load Angular, Firebase, Firebase Angular Library, and custom app.js -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/1.1.1/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
+    <script src="index.js"></script>
+</head>
+<body>
+<div ng-controller="ScheduleCtrl" class="container" ng-app="scheduleApp">
+
+<h4>Manager Scheduler</h4>
+
+ <button ng-click="login()" ng-hide="authData">Log In</button>
+<!--ADD ITEM FORM-->
+<div class="container">
+<form name="shiftForm">
+<div class = "container">
+    <div>
+        <input type="text"
+               name="shiftNameField"
+               ng-model="shiftName"
+               placeholder="Who's shift is it? (min 3 chars)"
+               required ng-minlength="3"
+               class="form-control"
+               ng-keyup="($event.keyCode == 13 && shiftName.length > 2) ? addItem() : return"
+               style="margin-bottom: 10px"
+                />
+        </div>
+        <div class = "container">
+<select class = "col-md-4 custom-dropdown" ng-model="selectedMonth" ng-options="x for x in busMonths">
+</select>
+
+<select class = "col-md-4 custom-dropdown" ng-model="selectedDay" ng-options="x for x in busDays">
+</select>
+
+<select class = "col-md-4 custom-dropdown" ng-model="selectedYear" ng-options="x for x in busYears">
+</select>
+<br>
+</div>
+<div class="container">
+                <select class = "col-md-4 custom-dropdown2"  ng-model="selectedStart" ng-options="x for x in startTimes">
+				</select>
+
+<select class = "col-md-4 custom-dropdown2" ng-model="selectedEnd" ng-options="x for x in endTimes">
+</select>
+</div>
+        <button ng-click="addShift()"
+                ng-hide="myForm.shiftNameField.$invalid"
+                class="btn btn-primary" type="button"
+                >Save Shift
+        </button>
+    </div>
+
+</form>
+</div>
+    <hr />
+
+
+<!--TODO LIST-->
+<div class="container">
+ 
+<h4 ng-show="(shifts | filter:{status: 'pending'}).length">Pending</h4>
+
+<div ng-repeat="shift in shifts| orderBy:'username'"
+     class="row list-item">
+
+    <div class="col-md-6">
+
+        <!--TODO LABEL-->
+        <span>{{shift.username}} - {{shift.month}} {{shift.day}}, {{shift.year}}</span>
+        <span>{{shift.start}} : {{shift.end}}</span>
+    </div>
+    <div class="col-md-6 text-right">
+        <!--START TODO BUTTON-->
+        <a class="btn btn-warning"
+           ng-click="startShift($index, shift, selectedYear, selectedDay, selectedMonth, selectedStart, selectedEnd)">
+            Start
+        </a>
+
+        <!--DELETE TODO BUTTON-->
+        <a class="btn btn-danger"
+           ng-click="removeShift($index, shift)">
+            <i class="glyphicon glyphicon-remove"></i> Remove
+        </a>
+
+    </div>
+
+</div>
+
+<h4 ng-show="(shifts | filter:{status: 'in progress'}).length">In Progress</h4>
+
+<div ng-repeat="shift in shifts | filter:{status: 'in progress'}"
+     class="row list-item bg-warning">
+
+    <div class="col-md-6">
+
+        <!--TODO LABEL-->
+        <span>{{shift.username}}</span>
+    </div>
+    <div class="col-md-6 text-right">
+        <!--COMPLETED TODO BUTTON-->
+        <a class="btn btn-primary"
+           ng-click="completeShift($index, shift)">
+            <i class="glyphicon glyphicon-ok"></i> Complete
+        </a>
+
+        <!--DELETE TODO BUTTON-->
+        <a class="btn btn-danger"
+           ng-click="removeShift($index, shift)">
+            <i class="glyphicon glyphicon-remove"></i> Remove
+        </a>
+
+    </div>
+
+</div>
+
+<h4 ng-show="(shifts | filter:{status: 'complete'}).length">Completed</h4>
+
+<div ng-repeat="shift in shifts | filter:{status: 'complete'}"
+     class="row list-item bg-success">
+<button ng-click="sortBy('username')">Order By Employee</button>
+  <button ng-click="sortBy('selectedMonth')">Sort by Month</button>
+    <div class="col-md-6">
+
+        <!--TODO LABEL-->
+        <span>{{shift.username}}</span>
+    </div>
+    <div class="col-md-6 text-right">
+
+        <!--DELETE TODO BUTTON-->
+        <a class="btn btn-danger"
+           ng-click="removeShift($index, shift)">
+            <i class="glyphicon glyphicon-remove"></i> Remove
+        </a>
+
+    </div>
+
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+</div>
+</body>
+</html>

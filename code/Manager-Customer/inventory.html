@@ -1,0 +1,252 @@
+ <!--written by elizabeth and prithvi -->
+ 
+ <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootswatch/3.3.0/journal/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- JS -->
+    <!-- load Angular, Firebase, Firebase Angular Library, and custom app.js -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/1.1.1/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
+    <script src="controllers/index.js"></script>
+</head>
+<body>
+<div ng-controller="ScheduleCtrl" class="container" ng-app="scheduleApp">
+
+<h4>Manager Scheduler</h4>
+
+ <button ng-click="login()" ng-hide="authData">Logged In</button>
+<!--ADD ITEM FORM-->
+
+
+<!--TODO LIST-->
+<div class="container">
+ 
+<p><h3>Perishables</h3></p>
+<div style="height:30%;overflow:auto;">
+	<table class="table table-bordered">
+		<tr>
+			<th>Name</th>
+			<th>Quantity</th>
+			<th>In stock</th>
+			<th>Update</th>
+			<th>Delete</th>
+		</tr>
+		
+		<tr ng-repeat="item in perishables">
+			<td>{{item.name}}</td>
+			<td>{{item.quantity}}</td>
+			<td>{{item.available}}</td>
+			<td><button ng-click="editPerishable(item._id)" class="btn btn-info btn-xs">Edit</button></td>
+			<td><button ng-click="removePerishable(item._id)" class="btn btn-danger btn-xs">Delete</button></td>
+		</tr>
+	</table>
+</div>
+   <form>
+	Name: <input type="text" ng-model="item.name" name="Name" required>
+	Quantity: <input type="text" ng-model="item.quantity" name="Quantity" required>
+	<button ng-click="addPerishable()" class="btn btn-info btn-xs">Add</button>
+	<button ng-click="updatePerishable()" class="btn btn-info btn-xs">Update</button>
+</form> 
+
+
+<p><h3>Non - Perishables</h3></p>
+<div style="height:30%;overflow:auto;">
+	<table class="table table-bordered">
+		<tr>
+			<th>Name</th>
+			<th>Quantity</th>
+			<th>In stock</th>
+			<th>Update</th>
+			<th>Delete</th>
+		</tr>
+		
+		<tr ng-repeat="item in nonperishables">
+			<td>{{item.name}}</td>
+			<td>{{item.quantity}}</td>
+			<td>{{item.available}}</td>
+			<td><button ng-click="editNonPerishable(item._id)" class="btn btn-info btn-xs">Edit</button></td>
+			<td><button ng-click="removeNonPerishable(item._id)" class="btn btn-danger btn-xs">Delete</button></td>
+		</tr>
+	</table>
+</div>
+   <form>
+	Name: <input type="text" ng-model="item.name" name="Name" required>
+	Quantity: <input type="text" ng-model="item.quantity" name="Quantity" required>
+	<button ng-click="addNonPerishable()" class="btn btn-info btn-xs">Add</button>
+	<button ng-click="updateNonPerishable()" class="btn btn-info btn-xs">Update</button>
+</form> 
+
+<p><h3>Drinks</h3></p>
+<div style="height:30%;overflow:auto;">
+	<table class="table table-bordered">
+		<tr>
+			<th>Name</th>
+			<th>Quantity</th>
+			<th>In stock</th>
+			<th>Update</th>
+			<th>Delete</th>
+		</tr>
+		
+		<tr ng-repeat="drink in drinks">
+			<td>{{drink.name}}</td>
+			<td>{{drink.quantity}}</td>
+			<td>{{drink.available}}</td>
+			<td><button ng-click="editDrinks(drink._id)" class="btn btn-info btn-xs">Edit</button></td>
+			<td><button ng-click="removeDrinks(drink._id)" class="btn btn-danger btn-xs">Delete</button></td>
+		</tr>
+	</table>
+</div>
+   <form>
+	Name: <input type="text" ng-model="drink.name" name="Name" required>
+	Quantity: <input type="text" ng-model="drink.quantity" name="Quantity" required>
+	<button ng-click="addDrinks()" class="btn btn-info btn-xs">Add</button>
+	<button ng-click="updateDrinks()" class="btn btn-info btn-xs">Update</button>
+</form> 
+
+
+<p><h3>Utensils</h3></p>
+<div style="height:30%;overflow:auto;">
+	<table class="table table-bordered">
+		<tr>
+			<th>Name</th>
+			<th>Quantity</th>
+			<th>In stock</th>
+			<th>Update</th>
+			<th>Delete</th>
+		</tr>
+		
+		<tr ng-repeat="item in utensils">
+			<td>{{item.name}}</td>
+			<td>{{item.quantity}}</td>
+			<td>{{item.available}}</td>
+			<td><button ng-click="editUtensils(item._id)" class="btn btn-info btn-xs">Edit</button></td>
+			<td><button ng-click="removeUtensils(item._id)" class="btn btn-danger btn-xs">Delete</button></td>
+		</tr>
+	</table>
+</div>
+   <form>
+	Name: <input type="text" ng-model="item.name" name="Name" required>
+	Quantity: <input type="text" ng-model="item.quantity" name="Quantity" required>
+	<button ng-click="addUtensils()" class="btn btn-info btn-xs">Add</button>
+	<button ng-click="updateUtensils()" class="btn btn-info btn-xs">Update</button>
+</form>  
+</div>
+
+
+
+</div>
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+</body>
+
+<!--
+<form>
+	Name: <input type="text" ng-model="item.name" name="Name" required>
+	Quantity: <input type="text" ng-model="item.quantity" name="Quantity" required>
+	<button ng-click="addPerishable()" class="btn btn-info btn-xs">Add</button>
+	<button ng-click="updatePerishable()" class="btn btn-info btn-xs">Update</button>
+</form> 
+</div>
+
+
+<div class="col-sm-6" ng-controller="inventoryCtrl">
+<p><h3>Non-Perishables</h3></p>
+<div style="height:30%;overflow:auto;">
+	<table class="table table-bordered">
+		<tr>
+			<th>Name</th>
+			<th>Quantity</th>
+			<th>In stock</th>
+			<th>Update</th>
+			<th>Delete</th>
+		</tr>
+		
+		<tr ng-repeat="item in nonperishables">
+			<td>{{item.name}}</td>
+			<td>{{item.quantity}}</td>
+			<td>{{item.available}}</td>
+			<td><button ng-click="editNonPerishable(item._id)" class="btn btn-info btn-xs">Edit</button></td>
+			<td><button ng-click="removeNonPerishable(item._id)" class="btn btn-danger btn-xs">Delete</button></td>
+		</tr>
+	</table>
+</div>
+<form>
+	Name: <input type="text" ng-model="item.name" name="Name" required>
+	Quantity: <input type="text" ng-model="item.quantity" name="Quantity" required>
+	<button ng-click="addNonPerishable()" class="btn btn-info btn-xs">Add</button>
+	<button ng-click="updateNonPerishable()" class="btn btn-info btn-xs">Update</button>
+</form> 
+</div>
+
+<div class="col-sm-6" ng-controller="inventoryCtrl">
+<p><h3>Drinks</h3></p>
+<div style="height:30%;overflow:auto;">
+	<table class="table table-bordered">
+		<tr>
+			<th>Name</th>
+			<th>Quantity</th>
+			<th>In stock</th>
+			<th>Update</th>
+			<th>Delete</th>
+		</tr>
+		
+		<tr ng-repeat="item in drinks">
+			<td>{{item.name}}</td>
+			<td>{{item.quantity}}</td>
+			<td>{{item.available}}</td>
+			<td><button ng-click="editDrinks(item._id)" class="btn btn-info btn-xs">Edit</button></td>
+			<td><button ng-click="removeDrinks(item._id)" class="btn btn-danger btn-xs">Delete</button></td>
+		</tr>
+	</table>
+</div>
+<form>
+	Name: <input type="text" ng-model="item.name" name="Name" required>
+	Quantity: <input type="text" ng-model="item.quantity" name="Quantity" required>
+	<button ng-click="addDrinks()" class="btn btn-info btn-xs">Add</button>
+	<button ng-click="updateDrinks()" class="btn btn-info btn-xs">Update</button>
+</form> 
+</div>
+
+
+<div class="col-sm-6" ng-controller="inventoryCtrl">
+<p><h3>Utensils</h3></p>
+<div style="height:30%;overflow:auto;">
+	<table class="table table-bordered">
+		<tr>
+			<th>Name</th>
+			<th>Quantity</th>
+			<th>In stock</th>
+			<th>Update</th>
+			<th>Delete</th>
+		</tr>
+		
+		<tr ng-repeat="item in utensils">
+			<td>{{item.name}}</td>
+			<td>{{item.quantity}}</td>
+			<td>{{item.available}}</td>
+			<td><button ng-click="editUtensils(item._id)" class="btn btn-info btn-xs">Edit</button></td>
+			<td><button ng-click="removeUtensils(item._id)" class="btn btn-danger btn-xs">Delete</button></td>
+		</tr>
+	</table>
+</div>
+<form>
+	Name: <input type="text" ng-model="item.name" name="Name" required>
+	Quantity: <input type="text" ng-model="item.quantity" name="Quantity" required>
+	<button ng-click="addUtensils()" class="btn btn-info btn-xs">Add</button>
+	<button ng-click="updateUtensils()" class="btn btn-info btn-xs">Update</button>
+</form> 
+
+
+</div>
+
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+
+</body>
+-->

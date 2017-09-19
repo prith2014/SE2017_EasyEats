@@ -1,0 +1,26 @@
+<div #loginwrapper class="wrapper">
+    <div class="container">
+        <h1>EasyEat</h1>
+
+        <form class="form">
+            <input type="text" placeholder="Username" #username>
+            <input type="password" placeholder="Password" #password>
+            <button type="submit" id="login-button" (click)="CheckPassword(username.value, password.value)">Login</button>
+        </form>
+
+        <h3 style="color: red" *ngIf="WrongPassword">Wrong Password. Please try again.</h3>
+    </div>
+
+    <ul class="bg-bubbles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>

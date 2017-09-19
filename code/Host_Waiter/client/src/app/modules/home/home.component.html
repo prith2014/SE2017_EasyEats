@@ -1,0 +1,24 @@
+<div #HomeContainer>
+    <div class="container">
+        <!--Top Menu-->
+        <div class="topMenu"></div>
+
+        <!--Side Menu-->
+        <div class="sideMenuTable" (click)="SwitchView('myTable')">
+            <i class="fa fa-table fa-5x" aria-hidden="true"></i>
+            <h3>Table</h3>
+        </div>
+        <div class="sideMenuMenu" (click)="SwitchView('myMenu')">Menu</div>
+        <div class="sideMenuGraph" (click)="SwitchView('myGraph')">Graph</div>
+        <div class="sideMenuUsers" (click)="SwitchView('myUsers')">Users</div>
+
+        <!--Main Area-->
+        <div class="mainArea">
+            <my-table *ngIf="ViewSet.myTable"></my-table>
+            <my-menu *ngIf="ViewSet.myMenu"></my-menu>
+            <my-graph *ngIf="ViewSet.myGraph"></my-graph>
+            <my-users *ngIf="ViewSet.myUsers"></my-users>
+        </div>
+    </div>
+
+</div>

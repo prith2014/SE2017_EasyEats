@@ -1,0 +1,4 @@
+1. Find Manager/public/managerHome.html
+2. Open in your local browser
+	2a. Since authentication is a common setup using firebase/angularfire, this view is shown as always logged in to the manager
+	 

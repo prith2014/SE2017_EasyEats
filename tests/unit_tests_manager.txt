@@ -1,0 +1,60 @@
+I. In the calendar tab, first see that the database has already populated some example shifts at the bottom
+	2. Make some of your own shifts:
+		A. type a name of your employee
+		B. choose a value for every drop down (in order of month, day, year, start, end)
+		C. press save shift
+			i. if all inputs are given, the shift should be shown in pending
+			ii. if one value is not given, no new shift should be shown in pending
+	3. Test pending
+		A. Start a shift in the pending category by pressing the button on the right ("start")
+			i. the same information should now be shown in "in progress"
+		B. remove another shift in pending by pressing remove (also on the right)
+	4. Test in progress
+		A. complete a shift in the pending category by pressing the button on the right ("complete")
+			i. the shift information should now be shown in "completed"
+		B. remove another shift in pending by pressing remove (also on the right)
+	5. Test complete
+		A. remove a shift in pending by pressing remove (also on the right)
+--------------
+II. In the inventory tab, first see that the database has populated some example values in the tables
+	2. Test each add function by inputting the name, quantity and meals it is used in, then pressing add
+		A. if all inputs are given the value should be shown in only that table
+		B. if one input is not given nothing should be added to the table
+	3. Test each delete button by pressing the button on the right of an entry
+		A. that entire row should be removed
+	4. Test each stock button:
+		A. if an item begins in stock, under the in stock heading will be a "went out of stock?" button and the out of stock column is empty. when the button is pressed, the cell should become empty and a new button under the out of stock column will appear. 
+		B. If an item is out of stock, there should be no entry in the in stock column and a button in the out of stock column.  By pressing the "in stock?" button, the row should be returned to its original view in A
+	5. Test adding an item to the menu:
+		A. enter the name, price, production cost, and if it contains dairy, nuts or no meat
+		B. choose the type of menu item (app, entree, etc)
+			i. if all inputs are present, go to the menu tab and see that it was added to the appropriate menu
+			ii. if one input is missing, nothing should be added in the menu tab
+---------------
+III. In the profits tab, see that the profits and costs tables are populated with database data
+	2. Test the profits table by adding appropriate inputs and clicking add on the bottom left of the page
+		A. if all inputs are present, row will be added to profits
+	3.Test the costs table by adding appropriate inputs and clicking add on the bottom right of the page
+		A. if all inputs are present, row will be added to costs
+			i. the table at the bottom of the page will be refreshed to show the average before this element
+---------------
+IV. In the menu tab, see that the menu tables are populated with database data
+	2. click a filter to see if items with that product disappear from the table
+	3. to get those elements back, refresh the page
+	4. click the takeout link
+		A. see that the table reflects the menu in the database
+		B. choose some (or no) meal items and click submit for each category
+			i. the bottom of the page should update the sum total
+			ii. click enter order
+				a. if no items were selected, a pop up will remind you to do so
+				b. if at leat one item is selected, be brought to an information page.
+					-- enter your personal information
+					--select place order
+						--if there are unfilled inputs, you will be prompted to fill in the field
+						--when correct, you will be brought back to the menu page
+	5. click the reservations link
+		A. enter your personal information
+				i. select submit reservation
+						--if there are unfilled inputs, you will be prompted to fill in the field
+						--when correct, you will be brought to a thank you page. You can choose where to go from there
+

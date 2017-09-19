@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>EasyEats</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title id="the-ion-title">
+        <strong>Current Tables</strong>
+      </ion-card-title>
+
+
+
+      <ion-list *ngIf="full_tables">
+
+        <ion-item *ngFor="let x of full_tables; let i = index">
+          <ion-thumbnail item-left>
+            <!--<img src="https://semantic-ui.com/images/avatar/large/helen.jpg">-->
+            <img src='{{x.waiters_pic}}'>
+          </ion-thumbnail>
+          <h2>Table {{i + 1}}</h2>
+          <p>Waiter: {{x.waiter_assigned}}</p>
+          <p style="color: red">Occupied | total: <span style="color: blue">$ {{x.bill_total}}</span></p>
+          <button ion-button clear item-right tappable (click)="TableClicked({tableNum: i + 1})">View</button>
+        </ion-item>
+
+      </ion-list>
+
+
+    </ion-card-content>
+  </ion-card>
+
+
+
+
+
+</ion-content>
+

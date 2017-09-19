@@ -1,0 +1,50 @@
+[
+    {
+        "outputFile": "C:\\Users\\Brett\\Dropbox\\SE2017_EasyEats\\1_code\\ChefApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-lo\\values-lo.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 105,
+                    "endColumn": 190,
+                    "endOffset": 291
+                },
+                "from": {
+                    "file": "C:\\Users\\Brett\\.android\\build-cache\\52b68aa949600b534f703a92cd84a7773227aa7f\\output\\res\\values-lo\\values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 0,
+                        "startOffset": 285,
+                        "endColumn": 190,
+                        "endOffset": 475
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "C:\\ChefApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-lo\\values-lo.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 105,
+                    "endColumn": 190,
+                    "endOffset": 291
+                },
+                "from": {
+                    "file": "C:\\Users\\Brett\\.android\\build-cache\\f03765f5c947f950b6b03d570519715788982ae0\\output\\res\\values-lo\\values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 0,
+                        "startOffset": 285,
+                        "endColumn": 190,
+                        "endOffset": 475
+                    }
+                }
+            }
+        ]
+    }
+]

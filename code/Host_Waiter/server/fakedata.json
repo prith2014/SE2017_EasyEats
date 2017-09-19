@@ -1,0 +1,39 @@
+{
+  "FinishedTables": {
+    "2016": {
+      "ytd_total": 34232,
+      "ytd_tip": 10453,
+      "ytd_average_sitting": 432,
+      "month": {
+        "January": {
+          "mtd_total": 234324,
+          "mtd_tip": 23321,
+          "mtd_sitting": 123,
+          "days": [
+            {
+              "day": 1,
+              "tables": [
+                {
+                  "table_number": 4,
+                  "num_of_customer": 3,
+                  "total_wo_tip": 28.23,
+                  "total_bill": 34.23,
+                  "total_tip": 8,
+                  "orders": [
+                    {
+                      "order_name": "Hamburger",
+                      "price": 5.35
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Febuary": {},
+      "March": {},
+      "April": {}
+    }
+  }
+}

@@ -1,0 +1,18 @@
+.main-table-content{
+    display:grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: auto;
+    grid-template-areas: 'item-left item-right';
+    grid-gap: 10px;
+}
+
+.item-left{
+    border: 1px solid red;
+    grid-area: item-left;
+}
+
+.item-right{
+    border: 1px solid blue;
+    height: 70vh;
+    grid-area: item-right;
+}

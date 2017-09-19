@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Table {{TableNum}}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <img src="{{TableData.waiters_pic}}"/>
+    <ion-card-content>
+      <ion-card-title>
+        Waiter: <span>{{TableData.waiter_assigned}}</span>
+      </ion-card-title>
+      <p>Total: <span>${{TableData.bill_total}}</span></p>
+    </ion-card-content>
+  </ion-card>
+
+
+  <ion-list *ngIf="orders">
+
+    <ion-item *ngFor="let x of orders">
+      <ion-thumbnail item-left>
+        <img src="{{x.pic}}">
+      </ion-thumbnail>
+      <h2>{{x.order_name}}</h2>
+      <p>${{x.price}}</p>
+      <!--<p style="color: red">Occupied | total: <span style="color: blue">$ {{x.bill_total}}</span></p>-->
+      <button ion-button clear item-right tappable>clear</button>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>
+
+

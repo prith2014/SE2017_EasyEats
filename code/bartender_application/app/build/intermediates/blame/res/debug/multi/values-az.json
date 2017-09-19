@@ -1,0 +1,50 @@
+[
+    {
+        "outputFile": "D:\\Project\\Bartender_Application\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-az\\values-az.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 105,
+                    "endColumn": 220,
+                    "endOffset": 321
+                },
+                "from": {
+                    "file": "C:\\Users\\Brett\\.android\\build-cache\\52b68aa949600b534f703a92cd84a7773227aa7f\\output\\res\\values-az\\values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 0,
+                        "startOffset": 285,
+                        "endColumn": 220,
+                        "endOffset": 505
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "C:\\Users\\Brett\\Dropbox\\SE2017_EasyEats\\1_code\\Bartender_Application\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-az\\values-az.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 105,
+                    "endColumn": 220,
+                    "endOffset": 321
+                },
+                "from": {
+                    "file": "C:\\Users\\Brett\\.android\\build-cache\\52b68aa949600b534f703a92cd84a7773227aa7f\\output\\res\\values-az\\values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 0,
+                        "startOffset": 285,
+                        "endColumn": 220,
+                        "endOffset": 505
+                    }
+                }
+            }
+        ]
+    }
+]

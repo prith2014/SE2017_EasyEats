@@ -1,0 +1,59 @@
+.menu-content{
+    display: grid;
+    grid-template-columns: 100px auto auto 100px;
+    grid-template-rows: 50vh 50vh;
+    grid-template-areas:
+        '. item-1 item-2 .'
+        '. item-3 item-4 .';
+        /*'. item-5 item-6 .';*/
+}
+
+.item-1{
+    grid-area: item-1;
+    background-image: url("img/menu/fries.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.item-2{
+    background-color: yellow;
+    grid-area: item-2;
+    background-image: url("img/menu/hamburger.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.item-3{
+    background-color: red;
+    grid-area: item-3;
+    background-image: url("img/menu/icecream.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.item-4{
+    background-color: green;
+    grid-area: item-4;
+    background-image: url("img/menu/softdrinks.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/*.fries-img{*/
+    /*max-width:100%;*/
+    /*max-height:100%;*/
+/*}*/
+
+/*.item-5{*/
+    /*background-color: orange;*/
+    /*grid-area: item-5;*/
+/*}*/
+
+/*.item-6{*/
+    /*background-color: pink;*/
+    /*grid-area: item-6;*/
+/*}*/

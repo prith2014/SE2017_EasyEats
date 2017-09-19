@@ -1,0 +1,92 @@
+<!--@authors elizabeth tejas mithu -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootswatch/3.3.0/journal/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- JS -->
+    <!-- load Angular, Firebase, Firebase Angular Library, and custom app.js -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/1.1.1/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
+    <script src="controllers/index.js"></script>
+</head>
+<body>
+<div ng-controller="ScheduleCtrl" class="container" ng-app="scheduleApp">
+
+<div style="font-size: 25px;">
+	<p align="center">
+	<a href="index.html">Menu</a>
+	</p>
+	</div>
+	<div style="font-size: 25px;">
+	<p align="center">
+	<a href="reservations.html">Reservations</a>
+	</p>
+	<div class="container">
+	<h1> Takeout </h1>
+
+	<h2> Appetizers </h2>
+	<form>
+	<div ng-init="dataApps.selectedApps=0">
+	<div ng-repeat="item in appetizers">
+	<label>
+		<input type="radio" name="apps" ng-value="{{item}}" ng-model="dataApps.selectedApps"> {{item.name}} -- {{item.price | currency}}
+	</label>
+	</div>
+	<input type="radio" name="apps" ng-value=0 ng-model="dataApps.selectedApps"> None
+	</div>
+	<button class="btn btn-info" ng-click="addApp()">Submit Appetizers</button>
+
+	<h2> Entrees </h2>
+	<div ng-init="dataEntrees.selectedEntrees=0">
+	<div ng-repeat="item in entree">
+	<label>
+		<input type="radio" name="entrees" ng-value="{{item}}" ng-model="dataEntrees.selectedEntrees"> {{item.name}} -- {{item.price | currency}}
+	</label>
+	</div>
+	<input type="radio" name="entrees" ng-value="0" ng-model="dataEntrees.selectedEntrees"> None
+	</div>
+	<button class="btn btn-info" ng-click="addEnt()">Submit Entrees</button>
+
+	<h2> Desserts </h2>
+	<div ng-init="dataDesserts.selectedDesserts=0">
+	<div ng-repeat="item in dessert">
+	<label>
+		<input type="radio" name="desserts" ng-value="{{item}}" ng-model="dataDesserts.selectedDesserts"> {{item.name}} -- {{item.price | currency}}
+	</label>
+	</div>
+	<input type="radio" name="desserts" ng-value="0" ng-model="dataDesserts.selectedDesserts"> None
+	</div>
+	<button class="btn btn-info" ng-click="addDes()">Submit Desserts</button>
+
+	<h2> Drinks </h2>
+	<div ng-init="dataDrinks.selectedDrinks=0">
+	<div ng-repeat="item in menuDrinks">
+	<label>
+		<input type="radio" name="drinks" ng-value="{{item}}" ng-model="dataDrinks.selectedDrinks"> {{item.name}} -- {{item.price | currency}}
+	</label>
+	</div>
+	<input type="radio" name="drinks" ng-value="0" ng-model="dataDrinks.selectedDrinks"> None
+	</div>
+	<button class="btn btn-info" ng-click="addDri()">Submit Drinks</button>
+
+	<br>
+	<br>
+	<h3>App Total: {{apps | currency}}</h3>
+	<h3>Entree Total: {{ent| currency}}</h3>
+	<h3>Dessert Total: {{des | currency}}</h3>
+	<h3>Drink Total: {{dri | currency}}</h3>
+	<br>
+	<div>
+	<h3>Subtotal: {{subTotal | currency}}</h3>
+	<h3>Tax: {{totalTax | currency}}</h3>
+	<h3>Total: {{totalCost | currency}}</h3>
+
+	<button class="btn btn-success" ng-click="submitOrder()">Enter Info</button>
+	</form>
+	</div>
+	</div>
+	<br>
+	<br>
+	
+		<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>

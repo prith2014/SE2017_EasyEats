@@ -1,0 +1,116 @@
+<!--@authors elizabeth tejas mithu -->
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+		  <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/1.1.1/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
+    <script src="controllers/index.js"></script>
+<body>
+		<title>EasyEats Menu</title>
+	<div ng-controller="ScheduleCtrl" class="container" ng-app="scheduleApp">
+	<div style="font-size: 25px;">
+	<p align="center">
+	<a href="takeout.html">Takeout</a>
+	</p>
+	<p align="center">
+	<a href="reservations.html">Reservations</a>
+	</p>
+	</div>
+		<div class="container">
+			<h1>Welcome to EasyEats!</h1>
+			</br>
+
+			<input type="checkbox" ng-model="dairy" ng-change="dairyChange()" ng-true-value="'dairyFilter'"> Filter out products with dairy
+			<br>
+			<input type="checkbox" ng-model="nuts" ng-change="nutsChange()" ng-true-value="'nutsFilter'"> Filter out products with nuts
+			<br>
+			<input type="checkbox" ng-model="vegetarian" ng-change="vegChange()" ng-true-value="'vegFilter'"> Filter out non-vegetarian items
+
+			<h2>Appetizers</h2>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Price</th>
+						<th>Availability</th>
+						<th>Contains</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in appetizers">
+						<td>{{item.name}}</td>
+						<td>{{item.price | currency}}</td>
+						<td>{{item.availability}}</td>
+						<td>Dairy: {{item.contains.dairy}} </br> Nuts: {{item.contains.nuts}} </br> Vegetarian: {{item.contains.vegetarian}}</td>
+					</tr>
+				</tbody>
+			</table>
+<!--
+			<h2>Entrees</h2>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Price</th>
+						<th>Availability</th>
+						<th>Contains</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in entrees" ng-show="item.availability" ng-hide="{{item.contains.dairy}} === dairyFilter || {{item.contains.nuts}} === nutsFilter || {{item.contains.vegetarian}} === vegFilter">
+						<td>{{item.name}}</td>
+						<td>{{item.price | currency}}</td>
+						<td>{{item.availability}}</td>
+						<td>Dairy: {{item.contains.dairy}} </br> Nuts: {{item.contains.nuts}} </br> Vegetarian: {{item.contains.vegetarian}}</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<h2>Desserts</h2>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Price</th>
+						<th>Availability</th>
+						<th>Contains</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in desserts" ng-show="item.availability" ng-hide="{{item.contains.dairy}} === dairyFilter || {{item.contains.nuts}} === nutsFilter || {{item.contains.vegetarian}} === vegFilter">
+						<td>{{item.name}}</td>
+						<td>{{item.price | currency}}</td>
+						<td>{{item.availability}}</td>
+						<td>Dairy: {{item.contains.dairy}} </br> Nuts: {{item.contains.nuts}} </br> Vegetarian: {{item.contains.vegetarian}}</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<h2>Drinks</h2>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Price</th>
+						<th>Availability</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in drinks" ng-show="item.availability">
+						<td>{{item.name}}</td>
+						<td>{{item.price | currency}}</td>
+						<td>{{item.availability}}</td>
+					</tr>
+				</tbody>
+			</table>
+-->
+		</div>
+		</div>
+		<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+</body>
